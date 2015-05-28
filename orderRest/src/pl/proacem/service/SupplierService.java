@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.proacem.dao.SupplierDao;
-import pl.proacem.model.SingleOrder;
 import pl.proacem.model.Supplier;
 
 @Service(value="SupplierService")

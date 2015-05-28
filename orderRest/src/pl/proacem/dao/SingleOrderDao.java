@@ -6,10 +6,10 @@ import pl.proacem.model.MainOrder;
 import pl.proacem.model.SingleOrder;
 
 public interface SingleOrderDao extends Dao<SingleOrder> {
-	public SingleOrderDao findByOrderNumber();
-	public SingleOrderDao findByOfferNumber();
-	public SingleOrderDao findByValuePln();
-	public SingleOrderDao findByValueEur();
+	public List<SingleOrder> findByOrderNumber(String searchPhase);
+	public List<SingleOrder> findByOfferNumber(String searchPhase);
+	public List<SingleOrder> findByValuePln(String searchPhase);
+	public List<SingleOrder> findByValueEur(String searchPhase);
 		
 	public List<SingleOrder> findBySupplier();
 	public List<SingleOrder> findByContractor();

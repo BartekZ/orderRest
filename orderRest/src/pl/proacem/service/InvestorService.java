@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import pl.proacem.dao.InvestorDao;
 import pl.proacem.model.Investor;
-import pl.proacem.model.SingleOrder;
 
 
 @Service(value="InvestorService")

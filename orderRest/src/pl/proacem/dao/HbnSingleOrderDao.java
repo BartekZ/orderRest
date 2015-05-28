@@ -42,25 +42,26 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 	}
 
 	@Override
-	public SingleOrderDao findByOrderNumber() {
+	public List<SingleOrder> findByOrderNumber(String searchPhase) {
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		List = em.createQuery("from SingleOrders s WHERE s.OrderName LIKE :search").setParameter("search", searchPhase).getResultList();
+		return List;
+	}
+
+	@Override
+	public List<SingleOrder> findByOfferNumber(String searchPhase) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public SingleOrderDao findByOfferNumber() {
+	public List<SingleOrder> findByValuePln(String searchPhase) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public SingleOrderDao findByValuePln() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SingleOrderDao findByValueEur() {
+	public List<SingleOrder> findByValueEur(String searchPhase) {
 		// TODO Auto-generated method stub
 		return null;
 	}

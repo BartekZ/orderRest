@@ -214,4 +214,14 @@ public class SingleOrderREST {
 		return singleorderService.getAll().size();
 	}
 	
+	@RequestMapping(
+			value="/singleorder/search/{word}", 
+			method = RequestMethod.GET )
+	public @ResponseBody List<SingleOrder> singleOrderList2(@PathVariable int word){
+
+		return singleorderService.getByMainOrder(id);
+		
+		//return singleorderService.getByMainOrder(1);
+	}
+	
 }

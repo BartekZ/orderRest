@@ -2,8 +2,6 @@ package pl.proacem.service;
 
 import java.util.List;
 
-import pl.proacem.model.SingleOrder;
-
 public interface ServiceInterface<T> {
 
 	T getById(int id);

@@ -62,6 +62,8 @@ public class SingleOrderService implements ServiceInterface<SingleOrder>{
 		return singleOrderDao.getLastId();
 	}
 	
+	public  List<SingleOrder> getByMainOrder(String word) {
 	
-
+		return singleOrderDao.findByOfferNumber(word);
+	}
 }

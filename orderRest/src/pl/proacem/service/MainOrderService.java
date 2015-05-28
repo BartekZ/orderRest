@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import pl.proacem.dao.MainOrderDao;
 import pl.proacem.model.MainOrder;
-import pl.proacem.model.SingleOrder;
 
 @Service(value="MainOrderService")
 @Transactional
