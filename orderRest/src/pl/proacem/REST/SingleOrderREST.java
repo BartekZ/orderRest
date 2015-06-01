@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import pl.proacem.dao.HbnSingleOrderDao;
 import pl.proacem.model.SingleOrder;
 import pl.proacem.service.SingleOrderService;
 
@@ -210,7 +211,10 @@ public class SingleOrderREST {
 			value="/singleorder/size", 
 			method = RequestMethod.GET )
 	public @ResponseBody Integer sizeGET(){
-		
+		List<SingleOrder> list = new ArrayList<SingleOrder>();
+		HbnSingleOrderDao hbnSingleOrderDao = new HbnSingleOrderDao();
+		list = hbnSingleOrderDao.findByOrderNumber("452");
+		System.out.println(list);
 		return singleorderService.getAll().size();
 	}
 	
