@@ -221,9 +221,9 @@ public class SingleOrderREST {
 	@RequestMapping(
 			value="/singleorder/search/{word}", 
 			method = RequestMethod.GET )
-	public @ResponseBody List<SingleOrder> findOfferNumber(@PathVariable String word){
-
-		return singleorderService.findOfferNumber(word);
+	public @ResponseBody List<SingleOrder> findByOrderNumber(@PathVariable String word){
+		System.out.println("search");
+		return singleorderService.findByOrderNumber(word);
 	}
 	
 }

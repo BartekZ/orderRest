@@ -15,7 +15,7 @@ public class SingleOrderServiceTest {
 	public void test() {
 		List<SingleOrder> list = new ArrayList<SingleOrder>();
 		SingleOrderService service = new SingleOrderService();
-		list = service.findOfferNumber("452");
+		list = service.findByOrderNumber("452");
 		System.out.println(list);
 		//assertEquals((1+1), 2);
 	}

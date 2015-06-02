@@ -63,7 +63,7 @@ public class SingleOrderService implements ServiceInterface<SingleOrder>{
 	}
 	
 	
-	public  List<SingleOrder> findOfferNumber(String word) {
+	public  List<SingleOrder> findByOrderNumber(String word) {
 		try {
 			return singleOrderDao.findByOrderNumber(word);
 		} catch (Exception e) {
