@@ -51,6 +51,13 @@ public class MainOrderService implements ServiceInterface<MainOrder>{
 	public MainOrder getLastId() {
 		return mainOrderDao.getLastId();
 	}
+	
+	public List<MainOrder> findByTopic(String word){
+		return mainOrderDao.findByTopic(word);
+	}
 
+	public List<MainOrder> findByMainNumber(String word){
+		return mainOrderDao.findByMainNumber(word);
+	}
 
 }

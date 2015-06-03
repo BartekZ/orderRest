@@ -50,6 +50,20 @@ public class SupplierService implements ServiceInterface<Supplier>{
 		return supplierDao.getLastId();
 	}
 
+	public List<Supplier> findByName(String word){
+		return supplierDao.findByName(word);
+	}
+	public List<Supplier> findByDescription(String word){
+		return supplierDao.findByDescription(word);
+	}
+	
+	public List<Supplier> findByAddress(String word){
+		return supplierDao.findByAddress(word);
+	}
+	
+	public List<Supplier> findByPhone(String word){
+		return supplierDao.findByPhone(word);
+	}
 
 
 	

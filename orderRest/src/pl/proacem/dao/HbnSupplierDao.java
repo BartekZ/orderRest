@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import pl.proacem.model.MainOrder;
 import pl.proacem.model.Supplier;
 
 @Repository
@@ -66,21 +67,62 @@ public class HbnSupplierDao extends AbstractDao<Supplier> implements SupplierDao
 		return null;
 	}
 
-	@Override
-	public Supplier findByAddress() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Supplier findByPhone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public Supplier getLastId(){
 		Supplier item = (Supplier) em.createQuery("from Supplier p order by p.id desc").setMaxResults(1).getSingleResult();
 		return item;
+	}
+
+	@Override
+	public List<Supplier> findByName(String word) {
+		List<Supplier> list = new ArrayList<Supplier>();
+		try {
+			list = em.createQuery("from Supplier s WHERE s.name LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			return list;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Supplier> findByDescription(String word) {
+		List<Supplier> list = new ArrayList<Supplier>();
+		try {
+			list = em.createQuery("from Supplier s WHERE s.description LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			return list;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Supplier> findByAddress(String word) {
+		List<Supplier> list = new ArrayList<Supplier>();
+		try {
+			list = em.createQuery("from Supplier s WHERE s.address LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			return list;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Supplier> findByPhone(String word) {
+		List<Supplier> list = new ArrayList<Supplier>();
+		try {
+			list = em.createQuery("from Supplier s WHERE s.phone LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			return list;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

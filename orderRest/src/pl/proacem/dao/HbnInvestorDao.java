@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import pl.proacem.model.Investor;
+import pl.proacem.model.SingleOrder;
 @Repository
 @Transactional
 public class HbnInvestorDao extends AbstractDao<Investor> implements InvestorDao{
@@ -51,6 +52,45 @@ public class HbnInvestorDao extends AbstractDao<Investor> implements InvestorDao
 	public Investor getLastId(){
 		Investor item = (Investor) em.createQuery("from Investor p order by p.id desc").setMaxResults(1).getSingleResult();
 		return item;
+	}
+
+	@Override
+	public List<Investor> findByDescription(String word) {
+		List<Investor> List = new ArrayList<Investor>();
+		try {
+			List = em.createQuery("from Investor s WHERE s.description LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Investor> findByNote(String word) {
+		List<Investor> List = new ArrayList<Investor>();
+		try {
+			List = em.createQuery("from Investor s WHERE s.note LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Investor> findByName(String word) {
+		List<Investor> List = new ArrayList<Investor>();
+		try {
+			List = em.createQuery("from Investor s WHERE s.name LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 

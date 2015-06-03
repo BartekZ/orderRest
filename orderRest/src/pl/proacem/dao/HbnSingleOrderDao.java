@@ -108,10 +108,10 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 	
 	@Override
 	public List<SingleOrder> findByOfferNumber(String searchPhase) {
-		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		List<SingleOrder> list = new ArrayList<SingleOrder>();
 		try {
-			List = em.createQuery("from SingleOrder s WHERE s.offerNumber LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
-			return List;
+			list = em.createQuery("from SingleOrder s WHERE s.offerNumber LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
+			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

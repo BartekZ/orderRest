@@ -56,5 +56,29 @@ public class InvestorService implements ServiceInterface<Investor>{
 		
 		return investorDao.getLastId();
 	}
+	
+	public  List<Investor> findByName(String word) {
+		try {
+			return investorDao.findByName(word);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public  List<Investor> findByDescription(String word) {
+		try {
+			return investorDao.findByDescription(word);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public  List<Investor> findByNote(String word) {
+		try {
+			return investorDao.findByNote(word);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 }
