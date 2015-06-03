@@ -42,28 +42,6 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 	}
 
 	@Override
-	public List<SingleOrder> findByOrderNumber(String searchPhase) {
-		List<SingleOrder> List = new ArrayList<SingleOrder>();
-		
-		
-		try {
-			List = em.createQuery("from SingleOrder s WHERE s.orderNumber LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
-			return List;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-				
-				return null;
-	}
-
-	@Override
-	public List<SingleOrder> findByOfferNumber(String searchPhase) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<SingleOrder> findByValuePln(String searchPhase) {
 		// TODO Auto-generated method stub
 		return null;
@@ -111,6 +89,74 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 		List<SingleOrder> ListAll = new ArrayList<SingleOrder>();
 		ListAll = em.createQuery("from SingleOrder s where s.owner = :id").setParameter("id", mainOrder).getResultList();
 		return ListAll;
+	}
+
+	//Searching methods
+	@Override
+	public List<SingleOrder> findByOrderNumber(String searchPhase) {
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		try {
+			List = em.createQuery("from SingleOrder s WHERE s.orderNumber LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+			
+	}
+	
+	@Override
+	public List<SingleOrder> findByOfferNumber(String searchPhase) {
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		try {
+			List = em.createQuery("from SingleOrder s WHERE s.offerNumber LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+			
+	}
+	
+	@Override
+	public List<SingleOrder> findBySpecification(String searchPhase) {
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		try {
+			List = em.createQuery("from SingleOrder s WHERE s.specification LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<SingleOrder> findByQuantity(String searchPhase) {
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		try {
+			List = em.createQuery("from SingleOrder s WHERE s.quantity LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<SingleOrder> findByOther(String searchPhase) {
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		try {
+			List = em.createQuery("from SingleOrder s WHERE s.other LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
