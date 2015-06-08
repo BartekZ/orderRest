@@ -56,15 +56,8 @@ public class HbnSupplierDao extends AbstractDao<Supplier> implements SupplierDao
 	}
 
 	@Override
-	public List<Supplier> find(String text) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Supplier> findByStatus(int status) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("from Supplier s where s.status = :status").setParameter("status", status).getResultList();
 	}
 
 	
@@ -80,8 +73,6 @@ public class HbnSupplierDao extends AbstractDao<Supplier> implements SupplierDao
 			list = em.createQuery("from Supplier s WHERE s.name LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -93,8 +84,6 @@ public class HbnSupplierDao extends AbstractDao<Supplier> implements SupplierDao
 			list = em.createQuery("from Supplier s WHERE s.description LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -106,8 +95,6 @@ public class HbnSupplierDao extends AbstractDao<Supplier> implements SupplierDao
 			list = em.createQuery("from Supplier s WHERE s.address LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -119,8 +106,6 @@ public class HbnSupplierDao extends AbstractDao<Supplier> implements SupplierDao
 			list = em.createQuery("from Supplier s WHERE s.phone LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}

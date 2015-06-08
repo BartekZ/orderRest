@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import pl.proacem.model.Person;
+import pl.proacem.model.SingleOrder;
 
 @Repository
 @Transactional
@@ -68,28 +69,26 @@ public class HbnPersonDao implements PersonDao {
 	}
 
 	@Override
-	public List<Person> find(String text) {
-		return null;
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public Person findByLogin(String login) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Person) em.createQuery("from Person p where p.login = :login").setParameter("login", login).setMaxResults(1).getSingleResult();
+		
 	}
 
 	@Override
-	public Person findByPhone(String phone) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Person> findByPhone(String phone) {
+		List<Person> List = new ArrayList<Person>();
+		try {
+			List = em.createQuery("from Person p WHERE p.phone LIKE :phone").setParameter("phone", "%" +phone + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
 	public List<Person> findByStatus(int status) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("from Person p where p.status = :status").setParameter("status", status).getResultList();
+		
 	}
 
 	public Person getLastId(){

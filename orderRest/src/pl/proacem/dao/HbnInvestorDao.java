@@ -20,11 +20,7 @@ public class HbnInvestorDao extends AbstractDao<Investor> implements InvestorDao
 		em.remove(em.getReference(Investor.class, id));
 	}
 
-	@Override
-	public List<Investor> find(String text) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -61,7 +57,6 @@ public class HbnInvestorDao extends AbstractDao<Investor> implements InvestorDao
 			List = em.createQuery("from Investor s WHERE s.description LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return List;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -74,7 +69,6 @@ public class HbnInvestorDao extends AbstractDao<Investor> implements InvestorDao
 			List = em.createQuery("from Investor s WHERE s.note LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return List;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -87,7 +81,6 @@ public class HbnInvestorDao extends AbstractDao<Investor> implements InvestorDao
 			List = em.createQuery("from Investor s WHERE s.name LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return List;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}

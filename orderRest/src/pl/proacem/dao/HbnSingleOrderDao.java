@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import pl.proacem.model.MainOrder;
+import pl.proacem.model.Person;
 import pl.proacem.model.SingleOrder;
 
 @Repository
@@ -30,27 +31,31 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 	}
 
 	@Override
-	public List<SingleOrder> find(String text) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<SingleOrder> findByStatus(int status) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("from Singleorder s where s.status = :status").setParameter("status", status).getResultList();
+		
 	}
 
 	@Override
 	public List<SingleOrder> findByValuePln(String searchPhase) {
-		// TODO Auto-generated method stub
-		return null;
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		try {
+			List = em.createQuery("from Singleorder p WHERE p.valuepln LIKE :searchPhase").setParameter("searchPhase", "%" +searchPhase + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
 	public List<SingleOrder> findByValueEur(String searchPhase) {
-		// TODO Auto-generated method stub
-		return null;
+		List<SingleOrder> List = new ArrayList<SingleOrder>();
+		try {
+			List = em.createQuery("from Singleorder p WHERE p.valueeur LIKE :searchPhase").setParameter("searchPhase", "%" +searchPhase + "%").getResultList();
+			return List;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
@@ -99,8 +104,6 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 			List = em.createQuery("from SingleOrder s WHERE s.orderNumber LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
 			return List;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 			
@@ -113,8 +116,6 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 			list = em.createQuery("from SingleOrder s WHERE s.offerNumber LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 			
@@ -127,8 +128,6 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 			List = em.createQuery("from SingleOrder s WHERE s.specification LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
 			return List;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -140,8 +139,6 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 			List = em.createQuery("from SingleOrder s WHERE s.quantity LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
 			return List;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -153,8 +150,6 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 			List = em.createQuery("from SingleOrder s WHERE s.other LIKE :search").setParameter("search", "%" +searchPhase + "%").getResultList();
 			return List;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}

@@ -28,29 +28,11 @@ public class HbnMainOrderDao extends AbstractDao<MainOrder> implements MainOrder
 		
 	}
 
-	@Override
-	public List<MainOrder> find(String text) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MainOrder> findByStatus(int status) {
 		
 		return em.createQuery("from Mainorder m where m.status = :status").setParameter("status", status).getResultList();
-	}
-
-	@Override
-	public MainOrder findByMainNumber() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MainOrder findByTopic() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -85,8 +67,6 @@ public class HbnMainOrderDao extends AbstractDao<MainOrder> implements MainOrder
 			list = em.createQuery("from Mainorder s WHERE s.mainNumber LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -98,8 +78,6 @@ public class HbnMainOrderDao extends AbstractDao<MainOrder> implements MainOrder
 			list = em.createQuery("from Mainorder s WHERE s.topic LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 	}

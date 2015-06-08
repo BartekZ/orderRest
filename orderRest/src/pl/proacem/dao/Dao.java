@@ -12,7 +12,6 @@ public abstract interface Dao<T extends ModelInterface> {
 	public void delete(T item);
 	public void deleteById(int id);
 	public void update(T item);
-	public List<T> find(String text);
 	public List<T> findByStatus(int status);
 	public T getLastId();
 	
