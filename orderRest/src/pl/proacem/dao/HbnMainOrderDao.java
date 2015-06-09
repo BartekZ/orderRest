@@ -7,7 +7,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import pl.proacem.model.Investor;
 import pl.proacem.model.MainOrder;
+import pl.proacem.model.Person;
 
 @Repository
 @Transactional
@@ -36,15 +38,13 @@ public class HbnMainOrderDao extends AbstractDao<MainOrder> implements MainOrder
 	}
 
 	@Override
-	public List<MainOrder> findByLeader() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MainOrder> findByLeader(Person leader) {
+		return em.createQuery("from Mainorder m where m.leader = :leader").setParameter("leader", leader).getResultList();
 	}
 
 	@Override
-	public List<MainOrder> findByInvestor() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MainOrder> findByInvestor(Investor investor) {
+		return em.createQuery("from Mainorder m where m.investor = :investor").setParameter("investor", investor).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -65,6 +65,7 @@ public class HbnMainOrderDao extends AbstractDao<MainOrder> implements MainOrder
 		List<MainOrder> list = new ArrayList<MainOrder>();
 		try {
 			list = em.createQuery("from Mainorder s WHERE s.mainNumber LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			System.out.println(list);
 			return list;
 		} catch (Exception e) {
 			return null;

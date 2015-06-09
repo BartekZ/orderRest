@@ -82,8 +82,13 @@ public class search {
 	public @ResponseBody List<MainOrder> searchMainOrders(@PathVariable String word){
 		
 		HashSet<MainOrder> list = new HashSet<MainOrder>();
-		list.addAll(mainOrderService.findByMainNumber(word));
-		list.addAll(mainOrderService.findByTopic(word));
+		if (mainOrderService.findByMainNumber(word) != null){
+			list.addAll(mainOrderService.findByMainNumber(word));
+		}
+		if (mainOrderService.findByTopic(word) != null){
+
+			list.addAll(mainOrderService.findByTopic(word));
+		}
 		
 		List<MainOrder> list2 = new ArrayList<MainOrder>(list);
 		

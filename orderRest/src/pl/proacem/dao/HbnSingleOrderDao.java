@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import pl.proacem.model.MainOrder;
 import pl.proacem.model.Person;
 import pl.proacem.model.SingleOrder;
+import pl.proacem.model.Supplier;
 
 @Repository
 @Transactional
@@ -59,20 +60,18 @@ public class HbnSingleOrderDao extends AbstractDao<SingleOrder> implements Singl
 	}
 
 	@Override
-	public List<SingleOrder> findBySupplier() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SingleOrder> findBySupplier(Supplier supplier) {
+		return em.createQuery("from Singleorder s where s.supplier = :supplier").setParameter("supplier", supplier).getResultList();
 	}
 
 	@Override
-	public List<SingleOrder> findByContractor() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SingleOrder> findByContractor(Person contractor) {
+		return em.createQuery("from Singleorder s where s.contractor = :contractor").setParameter("contractor", contractor).getResultList();
 	}
 
 	@Override
-	public List<SingleOrder> findByMainOrder() {
-		return null;
+	public List<SingleOrder> findByMainOrder(MainOrder mainorder) {
+		return em.createQuery("from Singleorder s where s.mainorder = :mainorder").setParameter("mainorder", mainorder).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
