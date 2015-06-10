@@ -64,10 +64,10 @@ public class HbnMainOrderDao extends AbstractDao<MainOrder> implements MainOrder
 	public List<MainOrder> findByMainNumber(String word) {
 		List<MainOrder> list = new ArrayList<MainOrder>();
 		try {
-			list = em.createQuery("from Mainorder s WHERE s.mainNumber LIKE :search").setParameter("search", "%" +word + "%").getResultList();
-			System.out.println(list);
+			list = em.createQuery("from MainOrder s WHERE s.mainNumber LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
+			System.out.println(e);
 			return null;
 		}
 	}
@@ -76,7 +76,7 @@ public class HbnMainOrderDao extends AbstractDao<MainOrder> implements MainOrder
 	public List<MainOrder> findByTopic(String word) {
 		List<MainOrder> list = new ArrayList<MainOrder>();
 		try {
-			list = em.createQuery("from Mainorder s WHERE s.topic LIKE :search").setParameter("search", "%" +word + "%").getResultList();
+			list = em.createQuery("from MainOrder s WHERE s.topic LIKE :search").setParameter("search", "%" +word + "%").getResultList();
 			return list;
 		} catch (Exception e) {
 			return null;

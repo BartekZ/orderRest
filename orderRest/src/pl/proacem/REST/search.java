@@ -67,9 +67,17 @@ public class search {
 	public @ResponseBody List<Investor> searchInvestors(@PathVariable String word){
 		
 		HashSet<Investor> list = new HashSet<Investor>();
-		list.addAll(investorService.findByName(word));
-		list.addAll(investorService.findByDescription(word));
-		list.addAll(investorService.findByNote(word));
+		if (investorService.findByName(word) != null){
+			list.addAll(investorService.findByName(word));
+		}
+		if (investorService.findByDescription(word) != null) {
+			list.addAll(investorService.findByDescription(word));
+		}
+		if (investorService.findByNote(word) != null) {
+			list.addAll(investorService.findByNote(word));
+		}
+		
+		
 		
 		List<Investor> list2 = new ArrayList<Investor>(list);
 		
@@ -83,6 +91,7 @@ public class search {
 		
 		HashSet<MainOrder> list = new HashSet<MainOrder>();
 		if (mainOrderService.findByMainNumber(word) != null){
+			
 			list.addAll(mainOrderService.findByMainNumber(word));
 		}
 		if (mainOrderService.findByTopic(word) != null){
@@ -101,10 +110,21 @@ public class search {
 	public @ResponseBody List<Supplier> searchSuppliers(@PathVariable String word){
 		
 		HashSet<Supplier> list = new HashSet<Supplier>();
-		list.addAll(supplierService.findByName(word));
-		list.addAll(supplierService.findByDescription(word));
-		list.addAll(supplierService.findByAddress(word));
-		list.addAll(supplierService.findByPhone(word));
+		if (supplierService.findByName(word) != null) {
+			list.addAll(supplierService.findByName(word));
+		}
+		if (supplierService.findByDescription(word) != null) {
+			list.addAll(supplierService.findByDescription(word));
+		}
+		if (supplierService.findByAddress(word) != null) {
+			list.addAll(supplierService.findByAddress(word));
+		}
+		if (supplierService.findByPhone(word) != null) {
+			list.addAll(supplierService.findByPhone(word));
+		}
+		
+		
+		
 		
 		List<Supplier> list2 = new ArrayList<Supplier>(list);
 		
